@@ -40,7 +40,6 @@
       <div class="container">
         <h1 class="jumbotron-heading">Hi, I'm Tyler</h1>
         <p class="lead text-muted">I'm a Python Analyst, Django Framework and Web Developer. Take a look around.</p>
-        <p class="lead text-muted">Job Inquiries Welcome</p>
         <p>
           <a href="mailto:nano.nzt@gmail.com" class="btn btn-warning my-2">Contact</a>
         </p>
@@ -60,7 +59,7 @@
           <hr />
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top img-fluid" src="{{ job.image.url }}" height="200" width="340" />
+              <img class="card-img-top" src="{{ job.image.url }}" height="200" width="340" />
               <div class="card-body">
                 <h5 class="text-center card-text">{{ job.title }}</h5>
                 <p>{{ job.summary }} </p>
