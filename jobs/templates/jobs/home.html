@@ -43,9 +43,11 @@
         <p>
           <a href="mailto:kotlowski.graphics@gmail.com" class="btn btn-warning my-2">Contact</a>
         </p>
+        <small class="lead text-muted text-center">For a Project Request, Email is Preferred</small>
+        <br />
         <br />
         <div class="text-center">
-        <img src="{% static 'profilepic.jpg' %}" class="rounded" height="300" width="320" />
+        <img src="{% static 'profilepic.jpg' %}" class="rounded" height="400" width="300" />
         </div>
       </div>
     </section>
@@ -59,7 +61,7 @@
           <hr />
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="{{ job.image.url }}" height="200" width="340" />
+              <img class="card-img-top img-fluid" src="{{ job.image.url }}" height="200" width="340" />
               <div class="card-body">
                 <h5 class="text-center card-text">{{ job.title }}</h5>
                 <p>{{ job.summary }} </p>
