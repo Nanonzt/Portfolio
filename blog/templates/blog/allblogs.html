@@ -1,78 +1,84 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
   {% load staticfiles %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Tyler's Blog</title>
-
-  <!-- Bootstrap core CSS -->
+  <title>The Blog - Kotlowski Graphics</title>
+  <meta name="description" content="Kotlowski Graphics - St Cloud Minnesota Modern Web Development and Design.">
+  <meta name="author" content="Tyler Kotlowski - Kotlowski Graphics">
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <link rel="stylesheet" href="{% static 'master.css' %}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300">
 </head>
 
 <body>
 
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <a class="navbar-brand" href="{% url 'home' %}">Tyler Kotlowski</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md shadow">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="Kotlowski-Graphics-Circle.svg" width="30" height="30" class="d-inline-block align-top" alt="Kotlowski-Graphics-Logo">
+        Kotlowski Graphics
+      </a>
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li><a class="mx-2" href="https://twitter.com/NANOVlTA"><img src="{% static 'twitter-logo-silhouette.svg' %}" width="20" height="20" alt="Twitter Link"></a></li>
+        <li><a class="mx-2" href="https://github.com/nanonzt"><img src="{% static 'github-logo-silhouette.svg' %}" width="20" height="20" alt="Github Link"></a></li>
+        <li><a class="mx-2" href="mailto:kotlowski.graphics@gmail.com"><img src="{% static 'mail-logo-silhouette.svg' %}" width="20" height="20" alt="Mail Link"></a></li>
+      </ul>
+      <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="https://twitter.com/NANOVlTA">Twitter</a>
-          <a class="nav-item nav-link" href="https://github.com/Nanonzt">Github</a>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#">Portfolio</a>
           <a class="nav-item nav-link" href="{% static 'TylerResume.pdf' %}">Resume</a>
           <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-item nav-link" href="https://github.com/nanonzt">Github</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main role="main">
-    <div class="container"
+    <div class="container">
+      <h1 class="text-center py-3">The Blog</h1>
+      <br />
+      <hr />
+      <h3>Latest Posts</h3>
+      {% for blog in blogs.all %}
+      <hr />
+      <a href="{% url 'detail' blog.id %}" class="btn btn-success my-1">{{ blog.title }}</a>
+      <br />
+      {{ blog.pubdate_pretty }}
+      <br />
+      <img class="img-fluid" src="{{ blog.image.url }}" height=200 width=200/>
+      <br />
+      <br />
+      <p>{{ blog.summary }}</p>
+      <br />
+      {% endfor %}
+    </div>
+  </main>
 
-    <br />
-    <h1 class="text-center py-3">Tyler's Blog</h1>
-    <br />
-    <hr />
-    <h3>Latest Posts</h3>
+  <footer>
+    <div class="info">
+      <p style="color: #3A2F60;">St Cloud Minnesota<br />
+        Jack of All Trades</p>
+      </div>
+      <div class="copyright">
+        <p style="color: #3A2F60;">Kotlowski Graphics
+          <script type="text/javascript">
+          var today = new Date()
+          var year = today.getFullYear()
+          document.write(year)
+          </script>
+        </p>
+      </div>
+    </footer>
 
-    {% for blog in blogs.all %}
-    <hr />
-    <a href="{% url 'detail' blog.id %}" class="btn btn-success my-1">{{ blog.title }}</a>
-    <br />
-    {{ blog.pubdate_pretty }}
-    <br />
-    <img class="img-fluid" src="{{ blog.image.url }}" height=200 width=200/>
-    <br />
-    <br />
-    <p>{{ blog.summary }}</p>
-    <br />
-    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-
-  </div>
-
-</main>
-
-
-<footer class="text-muted">
-  <div class="container text-center">
-    <hr />
-    <p>© Tyler Kotlowski {%  now "Y" %}</p>
-  </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-</body>
-</html>
+  </body>
+  </html>
